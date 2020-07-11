@@ -4,8 +4,8 @@ import "net/http"
 
 func hello() response {
 	resp := response{
-		status: http.StatusOK,
-		body:   "Hello",
+		Status: http.StatusOK,
+		Body:   "Hello",
 	}
 	return resp
 }
