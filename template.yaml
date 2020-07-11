@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: sam-restful-go
+
+Parameters:
+  EnvType:
+    Description: Environment type.
+    Type: String
+    AllowedValues:
+      - develop
+      - master
+
+Globals:
+  Api:
+    Cors:
+      AllowHeaders: "'Accept, Authorization, Content-Type, Cache-Control, pragma, Expires, Origin'"
+      AllowOrigin: "'*'"
+
+Resources:
+  Api:
+    Type: AWS::Serverless::Function 
+    Properties:
+      CodeUri: api/
+      Handler: main
+      Runtime: go1.x
+      Tags:
+        Project: MessageQueue
+        Environment: !Ref EnvType
+      MemorySize: 512
+      Timeout: 30
+      Tracing: Active
+      Events:
+        Hello:
+          Type: Api
+          Properties:
+            Path: /v1/hello
+            Method: GET
+        Hi:
+          Type: Api
+          Properties:
+            Path: /v1/hi/{name}
+            Method: POST
+      Policies:
+        - Statement:
+            - Action:
+                - "apigateway:*"
+              Effect: Allow
+              Resource: "*"
+      Environment:
+        Variables:
+          EnvType: !Ref EnvType
+          Region: !Ref AWS::Region
+Outputs:
+  Api:
+    Value:
+      Ref:  Api
