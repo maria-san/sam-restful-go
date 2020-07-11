@@ -37,7 +37,7 @@ Resources:
         Hi:
           Type: Api
           Properties:
-            Path: /v1/hi/{name}
+            Path: /v1/hi
             Method: POST
       Policies:
         - Statement:
