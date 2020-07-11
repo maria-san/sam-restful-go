@@ -4,7 +4,11 @@ deps:
 	go get github.com/aws/aws-lambda-go/lambda
 
 test:
-	go test ./... -v
+	go test ./... -cover -covermode=atomic -coverprofile=coverage.txt
+
+cover:
+	go tool cover -html=coverage.txt
+
 	
 clean: 
 	rm -rf ./src/main
