@@ -6,3 +6,38 @@ AWS SAM RESTful server
 - AWS SAM Framework
 - REST
 - Go
+
+## Installation
+### Local
+    make start
+### Deploy
+    make deploy
+        
+
+## API Resources
+
+  - [GET /hello](#get-hello)
+  - [POST /hi](#post-hi)
+
+### GET /hello
+
+Example: {{local}}/{version}/hello
+
+Response body:
+
+    "Hello"
+
+
+### POST /hi
+
+Example: {{local}}/{version}/hello
+
+Request body:
+
+    {
+        "name": "maria",
+    }
+
+Response body:
+
+    "Hi maria!"

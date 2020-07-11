@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "fcccbbd4-0b29-4de5-a4e1-b48d9fc80fe5",
+		"name": "sam-restful-go",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Hello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/{{version}}/hello",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"{{version}}",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hi",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"maria\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/{{version}}/hi",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"{{version}}",
+						"hi"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
