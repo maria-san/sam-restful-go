@@ -10,8 +10,8 @@ import (
 )
 
 type response struct {
-	status int
-	body   string
+	Status int
+	Body   string
 }
 
 func main() {
@@ -39,9 +39,17 @@ func handleRespond(s int, b string) (events.APIGatewayProxyResponse, error) {
 func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
 	path := &request.Path
+	body := &request.Body
+
 	if strings.Contains(*path, "hello") {
 		r := hello()
-		return handleRespond(r.status, r.body)
+		return handleRespond(r.Status, r.Body)
+	} else if strings.Contains(*path, "hi") {
+		r, err := hi(body)
+		if err != nil {
+			return handleRespond(http.StatusInternalServerError, err.Error())
+		}
+		return handleRespond(r.Status, r.Body)
 	}
 
 	return handleRespond(http.StatusNotFound, "")
