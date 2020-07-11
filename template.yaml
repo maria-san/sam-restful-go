@@ -20,14 +20,13 @@ Resources:
   Api:
     Type: AWS::Serverless::Function 
     Properties:
-      CodeUri: api/
-      Handler: main
+      Handler: api/main
       Runtime: go1.x
       Tags:
         Project: MessageQueue
         Environment: !Ref EnvType
       MemorySize: 512
-      Timeout: 30
+      Timeout: 60
       Tracing: Active
       Events:
         Hello:
