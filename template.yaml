@@ -23,7 +23,7 @@ Resources:
       Handler: api/main
       Runtime: go1.x
       Tags:
-        Project: MessageQueue
+        Project: Rest
         Environment: !Ref EnvType
       MemorySize: 512
       Timeout: 60
