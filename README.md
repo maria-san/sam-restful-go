@@ -6,6 +6,7 @@ AWS SAM RESTful server
 - AWS SAM Framework
 - REST
 - Go
+- Serverless
 
 ## Installation
 ### Local
